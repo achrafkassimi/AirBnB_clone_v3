@@ -77,15 +77,15 @@ def put_amenity(amenity_id):
     """
     Updates an amenity
     """
-    if not request.get_json():
-        abort(400, description="Not a JSON")
-
-    ignore = ['id', 'created_at', 'updated_at']
-
     amenity = storage.get(Amenity, amenity_id)
 
     if not amenity:
         abort(404)
+
+    if not request.get_json():
+        abort(400, description="Not a JSON")
+
+    ignore = ['id', 'created_at', 'updated_at']
 
     data = request.get_json()
     for key, value in data.items():
