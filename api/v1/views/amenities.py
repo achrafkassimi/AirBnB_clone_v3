@@ -9,8 +9,7 @@ from flask import abort, jsonify, make_response, request
 # from flasgger.utils import swag_from
 
 
-#, methods=['GET']
-@app_views.route('/amenities', strict_slashes=False)
+@app_views.route('/amenities', strict_slashes=False, methods=['GET'])
 # @swag_from('documentation/amenity/all_amenities.yml')
 def amenities_get():
     """
@@ -23,8 +22,8 @@ def amenities_get():
     return jsonify(list_amenities)
 
 
-#, methods=['GET']
-@app_views.route('/amenities/<amenity_id>/', strict_slashes=False)
+@app_views.route('/amenities/<amenity_id>/', methods=['GET'],
+                 strict_slashes=False)
 # @swag_from('documentation/amenity/get_amenity.yml', methods=['GET'])
 def amenity_get(amenity_id):
     """ Retrieves an amenity """
