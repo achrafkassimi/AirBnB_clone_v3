@@ -11,15 +11,13 @@ from api.v1.views import app_views
 from flask import jsonify
 
 
-# , methods=['GET'], strict_slashes=False
-@app_views.route('/status')
+@app_views.route('/status', methods=['GET'], strict_slashes=False)
 def status_of_api():
     """ Status of API """
     return jsonify({"status": "OK"})
 
 
-# , methods=['GET'], strict_slashes=False
-@app_views.route('/stats')
+@app_views.route('/stats', methods=['GET'], strict_slashes=False)
 def number_objects():
     """ Retrieves the number of each objects by type """
     classes = [Amenity, City, Place, Review, State, User]
