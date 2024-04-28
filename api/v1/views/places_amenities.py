@@ -12,7 +12,7 @@ from flask import abort, jsonify, make_response, request
 @app_views.route('places/<place_id>/amenities', methods=['GET'],
                  strict_slashes=False)
 # @swag_from('documentation/place_amenity/get_places_amenities.yml',
-        #    methods=['GET'])
+#    methods=['GET'])
 def get_place_amenities(place_id):
     """
     Retrieves the list of all Amenity objects of a Place
