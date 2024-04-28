@@ -11,7 +11,7 @@ from flask import abort, jsonify, make_response, request
 @app_views.route('/states/<state_id>/cities', methods=['GET'],
                  strict_slashes=False)
 # @swag_from('documentation/city/cities_by_state.yml', methods=['GET'])
-def cities_get_by_states(state_id):
+def get_cities_by_states(state_id):
     """
     Retrieves the list of all cities objects
     of a specific State, or a specific city
@@ -28,7 +28,7 @@ def cities_get_by_states(state_id):
 
 @app_views.route('/cities/<city_id>/', methods=['GET'], strict_slashes=False)
 # @swag_from('documentation/city/get_city.yml', methods=['GET'])
-def city_get(city_id):
+def get_city(city_id):
     """
     Retrieves a specific city based on id
     """
@@ -40,7 +40,7 @@ def city_get(city_id):
 
 @app_views.route('/cities/<city_id>', methods=['DELETE'], strict_slashes=False)
 # @swag_from('documentation/city/delete_city.yml', methods=['DELETE'])
-def city_delete(city_id):
+def delete_city(city_id):
     """
     Deletes a city based on id provided
     """
@@ -57,7 +57,7 @@ def city_delete(city_id):
 @app_views.route('/states/<state_id>/cities', methods=['POST'],
                  strict_slashes=False)
 # @swag_from('documentation/city/post_city.yml', methods=['POST'])
-def city_post(state_id):
+def post_city(state_id):
     """
     Creates a City
     """
@@ -78,7 +78,7 @@ def city_post(state_id):
 
 @app_views.route('/cities/<city_id>', methods=['PUT'], strict_slashes=False)
 # @swag_from('documentation/city/put_city.yml', methods=['PUT'])
-def city_put(city_id):
+def put_city(city_id):
     """
     Updates a City
     """
