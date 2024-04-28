@@ -121,7 +121,9 @@ class TestFileStorage(unittest.TestCase):
         storage.reload()
         dic = {"name": "Cundinamarca"}
         state_instance = State(**dic)
-
+        storage.new(state_instance)
+        storage.save()
+        
         get_instance = storage.get(State, state_instance.id)
         self.assertEqual(state_instance, get_instance)
 

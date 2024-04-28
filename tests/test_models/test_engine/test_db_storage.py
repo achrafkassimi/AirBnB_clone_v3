@@ -108,12 +108,12 @@ class TestDBStorage(unittest.TestCase):
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_save(self):
         """Test that save properly saves objects to database"""
+        storage = models.storage
+        storage.reload()
         state_data = {"name": "Casa"}
         new_state = State(**state_data)
-
-        models.storage.new(new_state)
-
-        models.storage.save()
+        storage.new(new_state)
+        storage.save()
 
         session = models.storage._DBStrorage__session
 
@@ -129,6 +129,8 @@ class TestDBStorage(unittest.TestCase):
         storage.reload()
         dic = {"name": "Cundinamarca"}
         state_instance = State(**dic)
+        storage.new(state_instance)
+        storage.save()
 
         get_instance = storage.get(State, state_instance.id)
         self.assertEqual(state_instance, get_instance)
