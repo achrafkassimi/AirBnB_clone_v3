@@ -28,10 +28,10 @@ def amenities_get():
 def amenity_get(amenity_id):
     """ Retrieves an amenity """
     amenity = storage.get(Amenity, amenity_id)
-    if not amenity:
-        abort(404)
-
-    return jsonify(amenity.to_dict())
+    if amenity:
+        return jsonify(amenity.to_dict())
+    else:
+        return abort(404)
 
 
 @app_views.route('/amenities/<amenity_id>', methods=['DELETE'],
