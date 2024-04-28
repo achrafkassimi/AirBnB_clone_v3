@@ -17,6 +17,7 @@ def status_of_api():
     """ Status of API """
     return jsonify({"status": "OK"})
 
+
 # , methods=['GET'], strict_slashes=False
 @app_views.route('/stats')
 def number_objects():
