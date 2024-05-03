@@ -4,11 +4,11 @@ from models.state import State
 from models import storage
 from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
-# from flasgger.utils import swag_from
+from flasgger.utils import swag_from
 
 
 @app_views.route('/states', methods=['GET'], strict_slashes=False)
-# @swag_from('documentation/state/get_state.yml', methods=['GET'])
+@swag_from('documentation/state/get_state.yml', methods=['GET'])
 def get_states():
     """
     Retrieves the list of all State objects
@@ -17,23 +17,23 @@ def get_states():
     list_states = []
     for state in all_states:
         list_states.append(state.to_dict())
-    return make_response(jsonify(list_states))
+    return jsonify(list_states)
 
 
 @app_views.route('/states/<state_id>', methods=['GET'], strict_slashes=False)
-# @swag_from('documentation/state/get_id_state.yml', methods=['get'])
+@swag_from('documentation/state/get_id_state.yml', methods=['get'])
 def get_state(state_id):
     """ Retrieves a specific State """
     state = storage.get(State, state_id)
     if not state:
         abort(404)
 
-    return make_response(jsonify(state.to_dict()))
+    return jsonify(state.to_dict())
 
 
 @app_views.route('/states/<state_id>', methods=['DELETE'],
                  strict_slashes=False)
-# @swag_from('documentation/state/delete_state.yml', methods=['DELETE'])
+@swag_from('documentation/state/delete_state.yml', methods=['DELETE'])
 def delete_state(state_id):
     """
     Deletes a State Object
@@ -51,7 +51,7 @@ def delete_state(state_id):
 
 
 @app_views.route('/states', methods=['POST'], strict_slashes=False)
-# @swag_from('documentation/state/post_state.yml', methods=['POST'])
+@swag_from('documentation/state/post_state.yml', methods=['POST'])
 def post_state():
     """
     Creates a State
@@ -69,7 +69,7 @@ def post_state():
 
 
 @app_views.route('/states/<state_id>', methods=['PUT'], strict_slashes=False)
-# @swag_from('documentation/state/put_state.yml', methods=['PUT'])
+@swag_from('documentation/state/put_state.yml', methods=['PUT'])
 def put_state(state_id):
     """
     Updates a State
